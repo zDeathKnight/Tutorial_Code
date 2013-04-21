@@ -29,7 +29,7 @@ public class Tutorial
 		
 		LanguageRegistry.addName(tutorialBlock, "Tutorial Block");
 		
-		tutorialItem = new ItemTutorial(5000).setUnlocalizedName("tutorial");
+		tutorialItem = new ItemTutorial(5000).setUnlocalizedName("tutorialItem");
 		
 		LanguageRegistry.addName(tutorialItem, "Tutorial Item");
 		
