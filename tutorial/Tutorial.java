@@ -3,6 +3,7 @@ package tutorial;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
@@ -25,9 +26,10 @@ public class Tutorial
 	{
 		tutorialBlock = new BlockTutorialBlock(500, Material.rock).setUnlocalizedName("tutorialBlock");
 		
-		GameRegistry.registerBlock(tutorialBlock, modid + tutorialBlock.getUnlocalizedName2());
+		GameRegistry.registerBlock(tutorialBlock, ItemTutorialBlock.class, modid + (tutorialBlock.getUnlocalizedName().substring(5)));
 		
-		LanguageRegistry.addName(tutorialBlock, "Tutorial Block");
+		LanguageRegistry.addName(new ItemStack(tutorialBlock, 1, 0), "Tutorial Block");
+		LanguageRegistry.addName(new ItemStack(tutorialBlock, 1, 1), "Nether Tutorial Block");
 		
 		tutorialItem = new ItemTutorial(5000).setUnlocalizedName("tutorialItem");
 		
