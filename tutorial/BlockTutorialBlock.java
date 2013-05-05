@@ -21,28 +21,49 @@ public class BlockTutorialBlock extends BlockGeneralTutorial
 	private Icon[] icons;
 	
 	@SideOnly(Side.CLIENT)
-    public void registerIcons(IconRegister par1IconRegister)
-    {
-		icons = new Icon[2];
+	public void registerIcons(IconRegister par1IconRegister)
+	{
+		icons = new Icon[4];
 		
 		for(int i = 0; i < icons.length; i++)
 		{
 			icons[i] = par1IconRegister.registerIcon(Tutorial.modid + ":" + (this.getUnlocalizedName().substring(5)) + i);
 		}
-    }
+	}
 	
 	@SideOnly(Side.CLIENT)
 	public Icon getIcon(int par1, int par2)
 	{
-		return icons[par2];
+		switch(par2)
+		{
+			case 0:
+				return icons[0];
+			case 1:
+			{
+				switch(par1)
+				{
+					case 0:
+						return icons[1];
+					case 1:
+						return icons[2];
+					default:
+						return icons[3];
+				}
+			}
+			default: 
+			{
+				System.out.println("Invalid metadata for " + this.getUnlocalizedName());
+				return icons[0];
+			}
+		}
 	}
 	
 	@SideOnly(Side.CLIENT)
-    public void getSubBlocks(int par1, CreativeTabs par2CreativeTabs, List par3List)
-    {
-        for (int var4 = 0; var4 < 2; ++var4)
-        {
-            par3List.add(new ItemStack(par1, 1, var4));
-        }
-    }
+	public void getSubBlocks(int par1, CreativeTabs par2CreativeTabs, List par3List)
+	{
+		for(int i = 0; i < 2; i++)
+		{
+			par3List.add(new ItemStack(par1, 1, i));
+		}
+	}
 }
